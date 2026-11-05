@@ -3,6 +3,7 @@ package fr.formation.bibliotheque.restController;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,7 +17,8 @@ import fr.formation.bibliotheque.dao.IDAOEditeur;
 import fr.formation.bibliotheque.model.Editeur;
 
 @RestController 
-@RequestMapping("/api/editeur")
+@RequestMapping("api/editeur")
+@CrossOrigin("*") //j'ai mis crossorigin pour tester l'api 
 public class EditeurRestController {
 
     @Autowired 
