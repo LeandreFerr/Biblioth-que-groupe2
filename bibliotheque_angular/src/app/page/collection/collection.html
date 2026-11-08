@@ -1,0 +1,123 @@
+<!--<h1> Gestion des collections</h1>-->
+
+<div class="collection-container">
+
+  <h1>Gestion des collections littéraires </h1>
+
+  <p class="subtitle">
+    Les collections du Soleil 
+    </p>
+
+  <!-- Ajouter une collection -->
+
+  <div class="formulaire">
+
+    <input
+      type="text"
+      placeholder="Nom de la collection..."
+      [(ngModel)]="nouveauNom"
+    />
+
+    <button (click)="ajouterCollection()">
+      + Ajouter
+    </button>
+
+  </div>
+
+  <!-- Liste des collections -->
+
+  <h2>Liste des collections</h2>
+
+  <table>
+
+    <thead>
+      <tr>
+        <th>Sélection</th>
+        <th>Id</th>
+        <th>Nom</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      @for (collection of collections; track collection.id) {
+
+        <tr>
+
+          <td>
+            <input
+              type="radio"
+              name="collectionSelection"
+              [value]="collection.id"
+              [(ngModel)]="collectionSelectionnee"
+            />
+          </td>
+
+          <td>{{ collection.id }}</td>
+
+          <td>
+
+            @if (modificationEnCours !== collection.id) {
+
+              {{ collection.nom }}
+
+            } @else {
+
+              <input
+                type="text"
+                [(ngModel)]="nouveauNomModif"
+              />
+
+              <button
+                class="action-button"
+                (click)="enregistrerModification()">
+                ✓
+              </button>
+
+              <button
+                class="cancel-button"
+                (click)="annulerModification()">
+                ×
+              </button>
+
+            }
+
+          </td>
+
+        </tr>
+
+      } @empty {
+
+        <tr>
+          <td colspan="3">
+            Aucune collection enregistrée.
+          </td>
+        </tr>
+
+      }
+
+    </tbody>
+
+  </table>
+
+  <!-- Boutons d'action -->
+
+  <div class="actions-selection">
+
+    <button
+      class="delete-button"
+      (click)="supprimerSelectionnee()">
+      Supprimer ×
+    </button>
+
+    <button
+      class="edit-button"
+      (click)="modifierSelectionnee()">
+      Modifier ✎
+    </button>
+
+  </div>
+
+  
+
+</div>

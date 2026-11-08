@@ -1,0 +1,252 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap');
+
+/* Fond général */
+:host {
+  display: block;
+  min-height: 100vh;
+  background: #f7f6f2;
+  padding: 50px 20px;
+  font-family: 'Nunito Sans', sans-serif;
+  color: #35483d;
+  box-sizing: border-box;
+}
+
+/* Conteneur principal */
+.collection-container {
+  max-width: 950px;
+  margin: 0 auto;
+  padding: 45px 50px;
+  background: #ffffff;
+  border-radius: 22px;
+  box-shadow: 0 8px 35px rgba(48, 65, 53, 0.08);
+}
+
+/* Titre principal */
+.collection-container h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+  color: #344b3c;
+  margin: 0 0 12px;
+}
+
+/* Sous-titre */
+.subtitle {
+  text-align: center;
+  color: #92998f;
+  font-size: 15px;
+  margin-bottom: 38px;
+  letter-spacing: 0.4px;
+}
+
+/* Formulaire d'ajout */
+.formulaire {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 0 auto 42px;
+  max-width: 650px;
+}
+
+/* Champs de saisie */
+.formulaire input,
+.collection-container td input[type="text"] {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 14px;
+  padding: 12px 16px;
+  border: 1px solid #e0e6df;
+  border-radius: 10px;
+  outline: none;
+  background: #fbfcfa;
+  color: #35483d;
+  transition: all 0.2s ease;
+}
+
+.formulaire input {
+  flex: 1;
+  min-width: 0;
+}
+
+.formulaire input:focus,
+.collection-container td input[type="text"]:focus {
+  border-color: #829c87;
+  box-shadow: 0 0 0 3px rgba(130, 156, 135, 0.13);
+}
+
+/* Boutons */
+button {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 22px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.formulaire button {
+  background: #607d68;
+  color: white;
+}
+
+.formulaire button:hover {
+  background: #496650;
+  transform: translateY(-2px);
+}
+
+/* Sous-titre du tableau */
+.collection-container h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  color: #405747;
+  margin: 0 0 18px;
+}
+
+/* Tableau */
+.collection-container table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border: 1px solid #e5eae3;
+  border-radius: 15px;
+  background: #fff;
+}
+
+/* En-tête */
+.collection-container thead {
+  background: #eaf0e9;
+}
+
+.collection-container th {
+  padding: 17px 20px;
+  color: #405747;
+  font-size: 13px;
+  font-weight: 800;
+  text-align: left;
+  letter-spacing: 0.4px;
+  border-bottom: 1px solid #e1e8df;
+}
+
+/* Cellules */
+.collection-container td {
+  padding: 16px 20px;
+  font-size: 14px;
+  color: #56645a;
+  border-bottom: 1px solid #edf0eb;
+}
+
+/* Dernière ligne */
+.collection-container tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Survol des lignes */
+.collection-container tbody tr {
+  transition: background 0.2s ease;
+}
+
+.collection-container tbody tr:hover {
+  background: #f7faf6;
+}
+
+/* Radio */
+.collection-container input[type="radio"] {
+  accent-color: #607d68;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+/* Actions de sélection */
+.actions-selection {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+/* Bouton supprimer */
+.delete-button {
+  background: #f7e9e6;
+  color: #a65e52;
+}
+
+.delete-button:hover {
+  background: #f0d9d4;
+}
+
+/* Bouton modifier */
+.edit-button {
+  background: #e8efe7;
+  color: #506d56;
+}
+
+.edit-button:hover {
+  background: #d9e6d8;
+}
+
+/* Bouton enregistrer */
+.action-button {
+  background: #607d68;
+  color: white;
+  padding: 8px 13px;
+  margin-left: 6px;
+}
+
+/* Bouton annuler */
+.cancel-button {
+  background: #f5e6e3;
+  color: #a65e52;
+  padding: 8px 13px;
+  margin-left: 5px;
+}
+
+/* Message aucune collection */
+.collection-container tbody td[colspan="3"] {
+  text-align: center;
+  padding: 35px;
+  color: #9a9f97;
+  font-style: italic;
+}
+
+/* Responsive téléphone */
+@media (max-width: 650px) {
+  :host {
+    padding: 20px 12px;
+  }
+
+  .collection-container {
+    padding: 28px 18px;
+    border-radius: 16px;
+  }
+
+  .collection-container h1 {
+    font-size: 25px;
+  }
+
+  .formulaire {
+    flex-direction: column;
+  }
+
+  .formulaire button {
+    width: 100%;
+  }
+
+  .collection-container th,
+  .collection-container td {
+    padding: 12px 9px;
+    font-size: 12px;
+  }
+
+  .actions-selection {
+    flex-direction: column;
+  }
+
+  .actions-selection button {
+    width: 100%;
+  }
+}
