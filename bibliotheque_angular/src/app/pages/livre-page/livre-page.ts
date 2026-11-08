@@ -8,9 +8,9 @@ import { Auteur, Collection, Editeur, Genre, GENRE_LABELS, Livre } from '../../m
 // =============================================================================
 // À DÉCOMMENTER LORS DE LA FUSION :
 // =============================================================================
-// import { AuteurService } from '../../services/auteur-service';
+import { AuteurService } from '../../services/auteur-service';
 // import { EditeurService } from '../../service/editeur-service';
-// import { CollectionService } from '../../service/collection-service';
+import { CollectionService } from '../../service/collection-service';
 
 @Component({
   imports: [FormsModule],
@@ -26,9 +26,9 @@ export class LivrePage implements OnInit {
     // =========================================================================
     // INJECTION DES SERVICES À DÉCOMMENTER LORS DE LA FUSION :
     // =========================================================================
-    // private auteurService: AuteurService,
+    private auteurService: AuteurService,
     // private editeurService: EditeurService,
-    // private collectionService: CollectionService
+    private collectionService: CollectionService
   ) {
     this.resetFormLivre();
   }
@@ -43,34 +43,35 @@ export class LivrePage implements OnInit {
   // Décommentez ce bloc ci-dessous et supprimez les 3 tableaux statiques.
   // Les getters permettent au HTML de fonctionner directement sans rien modifier !
   // =============================================================================
-  // protected auteursResource = rxResource({ stream: () => this.auteurService.findAll() });
+   protected auteursResource = rxResource({ stream: () => this.auteurService.findAll() });
   // protected editeursResource = rxResource({ stream: () => this.editeurService.findAll() });
-  // protected collectionsResource = rxResource({ stream: () => this.collectionService.getCollections() });
+   protected collectionsResource = rxResource({ stream: () => this.collectionService.getCollections() });
   //
-  // protected get auteurs(): Auteur[] { return this.auteursResource.value() ?? []; }
+  protected get auteurs(): Auteur[] { return this.auteursResource.value() ?? []; }
   // protected get editeurs(): Editeur[] { return this.editeursResource.value() ?? []; }
-  // protected get collections(): Collection[] { return this.collectionsResource.value() ?? []; }
+  protected get collections(): Collection[] { return this.collectionsResource.value() ?? []; }
 
   // Données temporaires d'attente pour les sélecteurs :
-  protected auteurs: Auteur[] = [
+  /*protected auteurs: Auteur[] = [
     { id: 1, nom: 'Orwell', prenom: 'George', nationalite: 'Britannique' },
     { id: 2, nom: 'Herbert', prenom: 'Frank', nationalite: 'Américain' },
     { id: 3, nom: 'Hugo', prenom: 'Victor', nationalite: 'Français' },
     { id: 4, nom: 'Asimov', prenom: 'Isaac', nationalite: 'Américain' }
-  ];
+  ];*/
 
   protected editeurs: Editeur[] = [
     { id: 1, nom: 'Gallimard', pays: 'France' },
     { id: 2, nom: 'Folio', pays: 'France' },
     { id: 3, nom: 'Penguin Books', pays: 'Royaume-Uni' },
-    { id: 4, nom: "J'ai Lu", pays: 'France' }
+    { id: 4, nom: "J'ai Lu", pays: 'France' },
+    { id: 4, nom: "Rosie & Wolfe", pays: 'Suisse' }
   ];
-
+/*
   protected collections: Collection[] = [
     { id: 1, nom: 'Science-Fiction' },
     { id: 2, nom: 'Classiques' },
     { id: 3, nom: 'Poche' }
-  ];
+  ];*/
 
   protected formLivre!: Livre;
   protected isEditing: boolean = false;
