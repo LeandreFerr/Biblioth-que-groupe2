@@ -29,17 +29,14 @@ public class Auteur {
     @Column(length = 25,nullable = false)
 	private String nationalite;
 
-    @OneToMany (mappedBy = "auteur", fetch = FetchType.LAZY)
-    private List<Livre> livres = new ArrayList<>();
 
     public Auteur(){}
 
-    public Auteur(Integer id, String nom, String prenom, String nationalite, List<Livre> livres) {
+    public Auteur(Integer id, String nom, String prenom, String nationalite) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.nationalite = nationalite;
-        this.livres = livres;
     }
 
     public Integer getId() {
@@ -74,22 +71,9 @@ public class Auteur {
         this.nationalite = nationalite;
     }
 
-    public List<Livre> getLivres() {
-        return livres;
-    }
-
-    public void setLivres(List<Livre> livres) {
-        this.livres = livres;
-    }
 
     @Override
     public String toString() {
-        return "Auteur [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", nationalite=" + nationalite + ", livres="
-                + livres + "]";
+        return "Auteur [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", nationalite=" + nationalite + "]";
     }
-    
-    
-    
-    
-
 }

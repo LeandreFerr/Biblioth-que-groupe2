@@ -1,0 +1,83 @@
+<div class="page-container">
+  
+  <div class="page-header">
+    <h1 class="page-title">Gestion des Auteurs</h1>
+    
+  </div>
+
+  <div class="card-vintage">
+    <h2 class="card-title">
+      {{ formAuteur.id ? 'Modifier l\'auteur' : 'Ajouter un auteur' }}
+    </h2>
+
+    <div class="form-grid">
+      <div class="form-group">
+        <label class="label-vintage">Nom</label>
+        <!-- Ajout de name="nom" -->
+        <input type="text" class="input-vintage" name="nom" [(ngModel)]="formAuteur.nom" placeholder="Ex: Hugo" />
+      </div>
+
+      <div class="form-group">
+        <label class="label-vintage">Prénom</label>
+        <!-- Ajout de name="prenom" -->
+        <input type="text" class="input-vintage" name="prenom" [(ngModel)]="formAuteur.prenom" placeholder="Ex: Victor" />
+      </div>
+
+      <div class="form-group">
+        <label class="label-vintage">Nationalité</label>
+        <!-- Ajout de name="nationalite" -->
+        <input type="text" class="input-vintage" name="nationalite" [(ngModel)]="formAuteur.nationalite" placeholder="Ex: Française" />
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button class="btn-submit" (click)="ajouterOuModifier()">
+        {{ formAuteur.id ? 'Mettre à jour' : 'Ajouter l\'auteur' }}
+      </button>
+
+      @if (formAuteur.id) {
+        <button class="btn-cancel" (click)="annulerEdition()">Annuler</button>
+      }
+    </div>
+  </div>
+
+  <div class="table-card" style="margin-top: 2.5rem;">
+    <table class="table-vintage">
+      <thead>
+        <tr>
+          <th class="col-id">ID</th>
+          <th>Nom</th>
+          <th>Prénom</th>
+          <th>Nationalité</th>
+          <th class="col-actions">Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        @for (auteur of auteurs.value(); track auteur.id) {
+          <tr>
+            <td class="col-id">{{ auteur.id }}</td>
+            <td><div class="auteur-nom">{{ auteur.nom }}</div></td>
+            <td><div class="auteur-prenom">{{ auteur.prenom }}</div></td>
+            <td>{{ auteur.nationalite }}</td>
+            <td class="col-actions">
+              <div class="actions-group">
+                <button class="btn-action-icon btn-edit" (click)="editer(auteur)" title="Éditer">
+                  <svg class="action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                </button>
+                <button class="btn-action-icon btn-delete" (click)="supprimer(auteur)" title="Supprimer">
+                  <svg class="action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                </button>
+              </div>
+            </td>
+          </tr>
+        } @empty {
+          <tr>
+            <td colspan="5" class="empty-state">Aucun auteur enregistré pour le moment.</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+</div>

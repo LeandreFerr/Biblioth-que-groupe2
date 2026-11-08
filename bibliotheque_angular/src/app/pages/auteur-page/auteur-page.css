@@ -1,0 +1,311 @@
+:host {
+  display: block;
+}
+
+.page-container {
+  max-width: 1100px;
+  margin: 2.5rem auto 5rem auto;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .page-container {
+    margin: 1.5rem auto;
+    padding: 0 1.0rem;
+  }
+}
+
+/* === En-tête de page === */
+.page-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 2px solid var(--vintage-ink);
+}
+
+.page-title {
+  font-family: var(--font-serif);
+  font-size: 2.3rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--vintage-ink);
+  margin: 0;
+}
+
+.page-subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--vintage-ink-muted);
+}
+
+/* === Carte Tableau Vintage === */
+.table-card {
+  width: 100%;
+  overflow-x: auto;
+  background-color: var(--vintage-surface);
+  border: 2px solid var(--vintage-ink);
+  box-shadow: var(--shadow-retro-md);
+  margin-bottom: 3rem;
+}
+
+.table-vintage {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-vintage th {
+  background-color: #f2ede4;
+  color: var(--vintage-ink);
+  font-family: var(--font-serif);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 0.7rem 1rem;
+  text-align: left;
+  border-bottom: 2px solid var(--vintage-ink);
+  border-right: 1px solid var(--vintage-border);
+}
+
+.table-vintage th:last-child {
+  border-right: none;
+}
+
+.table-vintage td {
+  padding: 0.65rem 1rem;
+  font-size: 0.92rem;
+  color: var(--vintage-ink);
+  border-bottom: 1px solid var(--vintage-border);
+  border-right: 1px solid var(--vintage-border);
+  vertical-align: middle;
+  transition: background-color 0.15s ease;
+}
+
+.table-vintage td:last-child {
+  border-right: none;
+}
+
+.table-vintage tbody tr:nth-child(even) td {
+  background-color: #faf7f2;
+}
+
+.table-vintage tbody tr:hover td {
+  background-color: var(--vintage-terracotta-light);
+}
+
+/* Colonne ID */
+.col-id {
+  width: 50px;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--vintage-terracotta);
+  text-align: center;
+}
+
+/* Colonne Auteur */
+.auteur-nom {
+  font-weight: 700;
+  color: var(--vintage-ink);
+}
+
+.auteur-prenom {
+  font-size: 0.85rem;
+  color: var(--vintage-ink-muted);
+}
+
+/* Colonne Actions */
+.col-actions {
+  text-align: right;
+  white-space: nowrap;
+  width: 90px;
+}
+
+.actions-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.btn-action-icon {
+  appearance: none;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 1.5px solid var(--vintage-ink);
+  box-shadow: 1.5px 1.5px 0px var(--vintage-ink);
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-icon {
+  width: 14px;
+  height: 14px;
+}
+
+.btn-action-icon:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 2.5px 2.5px 0px var(--vintage-ink);
+}
+
+.btn-action-icon:active {
+  box-shadow: 0px 0px 0px var(--vintage-ink);
+  transform: translate(1px, 1px);
+}
+
+.btn-edit {
+  background-color: #ffffff;
+  color: var(--vintage-forest);
+  border-color: var(--vintage-forest);
+}
+
+.btn-edit:hover {
+  background-color: var(--vintage-forest);
+  color: #ffffff;
+  border-color: var(--vintage-ink);
+}
+
+.btn-delete {
+  background-color: #ffffff;
+  color: var(--vintage-crimson);
+  border-color: var(--vintage-crimson);
+}
+
+.btn-delete:hover {
+  background-color: var(--vintage-crimson);
+  color: #ffffff;
+  border-color: var(--vintage-ink);
+}
+
+/* === Carte / Formulaire Vintage === */
+.card-vintage {
+  background-color: var(--vintage-surface);
+  border: 2px solid var(--vintage-ink);
+  border-radius: 4px;
+  box-shadow: var(--shadow-retro-md);
+  padding: 2rem 2.5rem;
+  margin-top: 2rem;
+}
+
+.card-title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--vintage-ink);
+  margin: 0 0 1.5rem 0;
+  padding-bottom: 0.6rem;
+  border-bottom: 1.5px solid var(--vintage-border);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.label-vintage {
+  font-family: var(--font-serif);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--vintage-ink);
+}
+
+.input-vintage {
+  width: 100%;
+  padding: 0.65rem 0.9rem;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--vintage-ink);
+  background-color: var(--vintage-surface-tint);
+  border: 1.5px solid var(--vintage-ink);
+  border-radius: 3px;
+  box-shadow: var(--shadow-retro-sm);
+  outline: none;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+.input-vintage:focus {
+  border-color: var(--vintage-terracotta);
+  box-shadow: 3px 3px 0px var(--vintage-terracotta);
+  background-color: #ffffff;
+}
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.btn-submit {
+  appearance: none;
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.7rem 1.8rem;
+  background-color: var(--vintage-terracotta);
+  color: #ffffff;
+  border: 2px solid var(--vintage-ink);
+  border-radius: 3px;
+  box-shadow: var(--shadow-retro-md);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-submit:hover:not(:disabled) {
+  background-color: var(--vintage-terracotta-hover);
+  box-shadow: 5px 5px 0px var(--vintage-ink);
+  transform: translate(-1px, -1px);
+}
+
+.btn-submit:active:not(:disabled) {
+  box-shadow: 0px 0px 0px var(--vintage-ink);
+  transform: translate(3px, 3px);
+}
+
+.btn-cancel {
+  appearance: none;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.6rem 1.2rem;
+  background-color: transparent;
+  color: var(--vintage-ink-muted);
+  border: 1.5px solid var(--vintage-border);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-cancel:hover {
+  background-color: #efe8dc;
+  color: var(--vintage-ink);
+  border-color: var(--vintage-ink);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--vintage-ink-muted);
+  font-style: italic;
+}

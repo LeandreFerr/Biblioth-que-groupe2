@@ -11,12 +11,11 @@ import jakarta.persistence.Table;
 @Table(name="collection")
 public class Collection {
 
-
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column (length = 30, nullable = false)
+    @Column(length = 30, nullable = false)
     private String nom;
 
     public Collection() {
@@ -50,4 +49,6 @@ public class Collection {
                 ", nom='" + nom + '\'' +
                 '}';
     }
+
 }
+

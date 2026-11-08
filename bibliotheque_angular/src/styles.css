@@ -1,1 +1,153 @@
-/* You can add global styles to this file, and also import other style files */
+/* === Thème Vintage / Éditorial & Professionnel === */
+:root {
+  /* Palette Vintage chaleureuse */
+  --vintage-cream: #f7f3ec;        /* Fond papier parchemin doux */
+  --vintage-surface: #ffffff;      /* Surface cartes / registre */
+  --vintage-surface-tint: #fcfbf9;  /* Nuance très claire */
+  
+  --vintage-ink: #231f1e;          /* Encre d'imprimerie sombre */
+  --vintage-ink-muted: #5e5752;    /* Encre estompée pour métadonnées */
+  --vintage-border: #dcd3c7;       /* Filet papier */
+  --vintage-border-dark: #231f1e;  /* Bordures d'accent franches */
+
+  /* Accents couleurs rétro */
+  --vintage-terracotta: #c2593f;
+  --vintage-terracotta-hover: #a84830;
+  --vintage-terracotta-light: #faece7;
+
+  --vintage-forest: #2f5d47;
+  --vintage-forest-hover: #234836;
+  --vintage-forest-light: #eaf2ed;
+
+  --vintage-crimson: #a63232;
+  --vintage-crimson-hover: #8c2525;
+  --vintage-crimson-light: #faeaea;
+
+  /* Typographie */
+  --font-serif: "Georgia", "Cambria", "Times New Roman", serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "Courier New", Courier, monospace;
+
+  /* Ombres portées nettes / esprit typo */
+  --shadow-retro-sm: 2px 2px 0px var(--vintage-border-dark);
+  --shadow-retro-md: 4px 4px 0px var(--vintage-border-dark);
+  --shadow-retro-lg: 6px 6px 0px var(--vintage-border-dark);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  background-color: var(--vintage-cream);
+  color: var(--vintage-ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Titres façon typographie éditoriale */
+h1 {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--vintage-ink);
+  margin: 0 0 2rem 0;
+  padding-bottom: 0.9rem;
+  border-bottom: 2px solid var(--vintage-ink);
+}
+
+/* ========================================== */
+/* COULEURS DES GENRES LITTÉRAIRES           */
+/* ========================================== */
+
+.badge-genre.genre-roman,
+.select-genre.genre-roman,
+option.genre-roman {
+  background-color: #faece7 !important;
+  color: #a84830 !important;
+  border-color: #d68f7f !important;
+}
+
+.badge-genre.genre-science_fiction,
+.select-genre.genre-science_fiction,
+option.genre-science_fiction {
+  background-color: #eaf1fa !important;
+  color: #1e4a7d !important;
+  border-color: #82a8d6 !important;
+}
+
+.badge-genre.genre-fantasy,
+.select-genre.genre-fantasy,
+option.genre-fantasy {
+  background-color: #f3ebfa !important;
+  color: #5a2e7a !important;
+  border-color: #b08ecf !important;
+}
+
+.badge-genre.genre-policier,
+.select-genre.genre-policier,
+option.genre-policier {
+  background-color: #eaecee !important;
+  color: #2b3947 !important;
+  border-color: #8090a0 !important;
+}
+
+.badge-genre.genre-manga,
+.select-genre.genre-manga,
+option.genre-manga {
+  background-color: #fdf0e8 !important;
+  color: #bd3f22 !important;
+  border-color: #e88670 !important;
+}
+
+.badge-genre.genre-bande_dessinee,
+.select-genre.genre-bande_dessinee,
+option.genre-bande_dessinee {
+  background-color: #fcf6e7 !important;
+  color: #8f600d !important;
+  border-color: #d8af56 !important;
+}
+
+.badge-genre.genre-theatre,
+.select-genre.genre-theatre,
+option.genre-theatre {
+  background-color: #faeaea !important;
+  color: #8c2525 !important;
+  border-color: #cb7474 !important;
+}
+
+.badge-genre.genre-poesie,
+.select-genre.genre-poesie,
+option.genre-poesie {
+  background-color: #ebf5ee !important;
+  color: #246445 !important;
+  border-color: #79b597 !important;
+}
+
+.badge-genre.genre-biographie,
+.select-genre.genre-biographie,
+option.genre-biographie {
+  background-color: #f6eee6 !important;
+  color: #6d4b35 !important;
+  border-color: #b59580 !important;
+}
+
+.badge-genre.genre-histoire,
+.select-genre.genre-histoire,
+option.genre-histoire {
+  background-color: #f3f2ea !important;
+  color: #5d5a37 !important;
+  border-color: #a19c6e !important;
+}
+
+.badge-genre.genre-autre,
+.select-genre.genre-autre,
+option.genre-autre {
+  background-color: #f0efed !important;
+  color: #5a5754 !important;
+  border-color: #aaa7a3 !important;
+}
