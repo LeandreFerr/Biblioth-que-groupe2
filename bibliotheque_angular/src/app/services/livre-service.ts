@@ -5,7 +5,8 @@ import { Livre } from '../models';
 
 @Service()
 export class LivreService {
-    private apiUrl: string = "http://localhost:8080/api/livre";
+    //private apiUrl: string = "http://localhost:8080/api/livre";
+    private apiUrl: string = "http://localhost:8090/api/livre";
     private http: HttpClient = inject(HttpClient);
 
     public findAll(): Observable<Livre[]> {

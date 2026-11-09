@@ -11,7 +11,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
-@Entity 
+@Entity
 @Table(name = "livre")
 public class Livre {
 
@@ -32,26 +32,28 @@ public class Livre {
     @Column(nullable = false)
     private int annee;
 
-    @ManyToOne 
+    @ManyToOne
     @JoinColumn(name = "auteur", nullable = false)
     private Auteur auteur;
 
-    @ManyToOne 
+    @ManyToOne
     @JoinColumn(name = "editeur", nullable = false)
     private Editeur editeur;
 
-    @ManyToOne 
+    @ManyToOne
     @JoinColumn(name = "collection", nullable = true)
     private Collection collection;
 
-    @Enumerated(EnumType.STRING)
+    @ManyToOne
+    @JoinColumn(name = "genre_id")
     private Genre genre;
 
     // ==========================================
     // CONSTRUCTEURS
     // ==========================================
 
-    public Livre() { }
+    public Livre() {
+    }
 
     public Livre(Integer id, String titre, String resume, int annee, Auteur auteur, Editeur editeur,
             Collection collection, Genre genre) {

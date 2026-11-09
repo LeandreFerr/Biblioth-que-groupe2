@@ -1,15 +1,11 @@
 <h2>Liste des genres</h2>
 
-<table>
-    <thead>
-        <tr>
-            <th>Genre</th>
-        </tr>
-    </thead>
 
-    <tbody>
-        <tr *ngFor="let genre of genres">
-            <td>{{ genre }}</td>
-        </tr>
-    </tbody>
-</table>
+<p>Nombre de genres : {{ genres.length }}</p>
+
+<ul>
+  <li *ngFor="let genre of genres">
+    {{ genre.id }} - {{ genre.libelle }}
+  </li>
+</ul>
+

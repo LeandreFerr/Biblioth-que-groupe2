@@ -21,70 +21,78 @@
       </thead>
       <tbody>
         @for (livre of livres.value(); track livre.id) {
-          <tr>
-            <!-- ID -->
-            <td class="col-id">{{ livre.id }}</td>
+        <tr>
+          <!-- ID -->
+          <td class="col-id">{{ livre.id }}</td>
 
-            <!-- Titre + Genre + Résumé -->
-            <td class="col-livre">
-              <div class="livre-meta-top">
-                <span class="livre-titre">{{ livre.titre }}</span>
-                <span [class]="'badge-genre genre-' + livre.genre.toLowerCase()">
-                  {{ genreLabels[livre.genre] || livre.genre }}
-                </span>
-              </div>
-              <p class="livre-resume" [title]="livre.resume">
-                {{ livre.resume }}
-              </p>
-            </td>
-
-            <!-- Auteur -->
-            <td class="col-auteur">
-              <div class="auteur-nom">{{ livre.auteur.nom }}</div>
-              <div class="auteur-prenom">{{ livre.auteur.prenom }}</div>
-            </td>
-
-            <!-- Éditeur + Collection + Année -->
-            <td class="col-edition">
-              <div class="editeur-ligne">
-                <strong>{{ livre.editeur.nom }}</strong>
-                <span class="annee-pill">{{ livre.annee }}</span>
-              </div>
-              @if (livre.collection?.nom) {
-                <div class="collection-ligne">
-                  <span class="label-sub">Coll.</span> {{ livre.collection?.nom }}
-                </div>
+          <!-- Titre + Genre + Résumé -->
+          <td class="col-livre">
+            <div class="livre-meta-top">
+              <span class="livre-titre">{{ livre.titre }}</span>
+              @if (livre.genre) {
+              <span [class]="'badge-genre genre-' + livre.genre.libelle.toLowerCase()">
+                {{ livre.genre.libelle }}
+              </span>
               } @else {
-                <div class="collection-vide">—</div>
+              <span class="badge-genre">Non renseigné</span>
               }
-            </td>
+            </div>
+            <p class="livre-resume" [title]="livre.resume">
+              {{ livre.resume }}
+            </p>
+          </td>
 
-            <!-- Actions -->
-            <td class="col-actions">
-              <div class="actions-group">
-                <button (click)="edit(livre)" class="btn-action-icon btn-edit" title="Éditer cet ouvrage" aria-label="Éditer">
-                  <svg class="action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-                  </svg>
-                </button>
-                <button (click)="delete(livre)" class="btn-action-icon btn-delete" title="Supprimer cet ouvrage" aria-label="Supprimer">
-                  <svg class="action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="3 6 5 6 21 6"></polyline>
-                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                    <line x1="10" y1="11" x2="10" y2="17"></line>
-                    <line x1="14" y1="11" x2="14" y2="17"></line>
-                  </svg>
-                </button>
-              </div>
-            </td>
-          </tr>
+          <!-- Auteur -->
+          <td class="col-auteur">
+            <div class="auteur-nom">{{ livre.auteur.nom }}</div>
+            <div class="auteur-prenom">{{ livre.auteur.prenom }}</div>
+          </td>
+
+          <!-- Éditeur + Collection + Année -->
+          <td class="col-edition">
+            <div class="editeur-ligne">
+              <strong>{{ livre.editeur.nom }}</strong>
+              <span class="annee-pill">{{ livre.annee }}</span>
+            </div>
+            @if (livre.collection?.nom) {
+            <div class="collection-ligne">
+              <span class="label-sub">Coll.</span> {{ livre.collection?.nom }}
+            </div>
+            } @else {
+            <div class="collection-vide">—</div>
+            }
+          </td>
+
+          <!-- Actions -->
+          <td class="col-actions">
+            <div class="actions-group">
+              <button (click)="edit(livre)" class="btn-action-icon btn-edit" title="Éditer cet ouvrage"
+                aria-label="Éditer">
+                <svg class="action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                  <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                </svg>
+              </button>
+              <button (click)="delete(livre)" class="btn-action-icon btn-delete" title="Supprimer cet ouvrage"
+                aria-label="Supprimer">
+                <svg class="action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="3 6 5 6 21 6"></polyline>
+                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                  <line x1="10" y1="11" x2="10" y2="17"></line>
+                  <line x1="14" y1="11" x2="14" y2="17"></line>
+                </svg>
+              </button>
+            </div>
+          </td>
+        </tr>
         } @empty {
-          <tr>
-            <td colspan="5" class="empty-state">
-              Aucun ouvrage répertorié pour le moment.
-            </td>
-          </tr>
+        <tr>
+          <td colspan="5" class="empty-state">
+            Aucun ouvrage répertorié pour le moment.
+          </td>
+        </tr>
         }
       </tbody>
     </table>
@@ -95,15 +103,15 @@
     <h2 class="card-title">
       <span>{{ isEditing ? 'Modifier l\'ouvrage n°' + formLivre.id : 'Enregistrer un nouvel ouvrage' }}</span>
       @if (isEditing) {
-        <button (click)="cancel()" class="btn-cancel">✕ Annuler la modification</button>
+      <button (click)="cancel()" class="btn-cancel">✕ Annuler la modification</button>
       }
     </h2>
 
     @if (messageInfo) {
-      <div class="banner-info">
-        <span>{{ messageInfo }}</span>
-        <button type="button" (click)="fermerMessage()" class="btn-banner-close" title="Fermer">✕</button>
-      </div>
+    <div class="banner-info">
+      <span>{{ messageInfo }}</span>
+      <button type="button" (click)="fermerMessage()" class="btn-banner-close" title="Fermer">✕</button>
+    </div>
     }
 
     <form (submit)="save()">
@@ -111,46 +119,29 @@
         <!-- Titre -->
         <div class="form-group">
           <label class="label-vintage" for="titre">Titre du livre *</label>
-          <input 
-            type="text" 
-            id="titre" 
-            name="titre" 
-            [(ngModel)]="formLivre.titre" 
-            required 
-            maxlength="30" 
-            class="input-vintage" 
-            placeholder="Ex : 1984..."
-          />
+          <input type="text" id="titre" name="titre" [(ngModel)]="formLivre.titre" required maxlength="30"
+            class="input-vintage" placeholder="Ex : 1984..." />
         </div>
 
         <!-- Année -->
         <div class="form-group">
           <label class="label-vintage" for="annee">Année de parution *</label>
-          <input 
-            type="number" 
-            id="annee" 
-            name="annee" 
-            [(ngModel)]="formLivre.annee" 
-            required 
-            class="input-vintage" 
-            placeholder="Ex : 1949"
-          />
+          <input type="number" id="annee" name="annee" [(ngModel)]="formLivre.annee" required class="input-vintage"
+            placeholder="Ex : 1949" />
         </div>
 
         <!-- Genre -->
         <div class="form-group">
           <label class="label-vintage" for="genre">Genre littéraire *</label>
-          <select 
-            id="genre" 
-            name="genre" 
-            [(ngModel)]="formLivre.genre" 
-            required 
-            [class]="'select-vintage select-genre genre-' + (formLivre.genre ? formLivre.genre.toLowerCase() : '')"
-          >
-            @for (g of genres; track g) {
-              <option [value]="g" [class]="'opt-genre genre-' + g.toLowerCase()">
-                {{ genreLabels[g] }}
-              </option>
+
+          <select id="genre" name="genre" [(ngModel)]="formLivre.genre" required
+            [class]="'select-vintage select-genre genre-' + (formLivre.genre?.libelle?.toLowerCase() || '')">
+            <option [ngValue]="null" disabled>-- Choisir un genre --</option>
+
+            @for (g of genres; track g.id) {
+            <option [ngValue]="g" [class]="'opt-genre genre-' + g.libelle.toLowerCase()">
+              {{ g.libelle }}
+            </option>
             }
           </select>
         </div>
@@ -159,18 +150,13 @@
         <div class="form-group">
           <div class="label-header">
             <label class="label-vintage" for="auteurId">Auteur *</label>
-            <button type="button" (click)="notifierIndisponible('auteurs')" class="btn-quick-add" title="Page Auteur en attente">+ Nouveau</button>
+            <button type="button" (click)="notifierIndisponible('auteurs')" class="btn-quick-add"
+              title="Page Auteur en attente">+ Nouveau</button>
           </div>
-          <select 
-            id="auteurId" 
-            name="auteurId" 
-            [(ngModel)]="formLivre.auteur.id" 
-            required 
-            class="select-vintage"
-          >
+          <select id="auteurId" name="auteurId" [(ngModel)]="formLivre.auteur.id" required class="select-vintage">
             <option [ngValue]="undefined" disabled>-- Choisir un auteur --</option>
             @for (a of auteurs; track a.id) {
-              <option [ngValue]="a.id">{{ a.id }} - {{ a.nom }} {{ a.prenom }}</option>
+            <option [ngValue]="a.id">{{ a.id }} - {{ a.nom }} {{ a.prenom }}</option>
             }
           </select>
         </div>
@@ -179,18 +165,13 @@
         <div class="form-group">
           <div class="label-header">
             <label class="label-vintage" for="editeurId">Éditeur *</label>
-            <button type="button" (click)="notifierIndisponible('éditeurs')" class="btn-quick-add" title="Page Éditeur en attente">+ Nouveau</button>
+            <button type="button" (click)="notifierIndisponible('éditeurs')" class="btn-quick-add"
+              title="Page Éditeur en attente">+ Nouveau</button>
           </div>
-          <select 
-            id="editeurId" 
-            name="editeurId" 
-            [(ngModel)]="formLivre.editeur.id" 
-            required 
-            class="select-vintage"
-          >
+          <select id="editeurId" name="editeurId" [(ngModel)]="formLivre.editeur.id" required class="select-vintage">
             <option [ngValue]="undefined" disabled>-- Choisir un éditeur --</option>
             @for (e of editeurs; track e.id) {
-              <option [ngValue]="e.id">{{ e.id }} - {{ e.nom }} ({{ e.pays }})</option>
+            <option [ngValue]="e.id">{{ e.id }} - {{ e.nom }} ({{ e.pays }})</option>
             }
           </select>
         </div>
@@ -199,18 +180,14 @@
         <div class="form-group">
           <div class="label-header">
             <label class="label-vintage" for="collectionId">Collection (optionnel)</label>
-            <button type="button" (click)="notifierIndisponible('collections')" class="btn-quick-add" title="Page Collection en attente">+ Nouvelle</button>
+            <button type="button" (click)="notifierIndisponible('collections')" class="btn-quick-add"
+              title="Page Collection en attente">+ Nouvelle</button>
           </div>
-          <select 
-            id="collectionId" 
-            name="collectionId" 
-            [ngModel]="formLivre.collection?.id" 
-            (ngModelChange)="formLivre.collection = $event ? { id: $event, nom: '' } : null" 
-            class="select-vintage"
-          >
+          <select id="collectionId" name="collectionId" [ngModel]="formLivre.collection?.id"
+            (ngModelChange)="formLivre.collection = $event ? { id: $event, nom: '' } : null" class="select-vintage">
             <option [ngValue]="null">-- Aucune collection --</option>
             @for (c of collections; track c.id) {
-              <option [ngValue]="c.id">{{ c.id }} - {{ c.nom }}</option>
+            <option [ngValue]="c.id">{{ c.id }} - {{ c.nom }}</option>
             }
           </select>
         </div>
@@ -218,15 +195,8 @@
         <!-- Résumé -->
         <div class="form-group form-group-full">
           <label class="label-vintage" for="resume">Synopsis / Résumé *</label>
-          <textarea 
-            id="resume" 
-            name="resume" 
-            [(ngModel)]="formLivre.resume" 
-            required 
-            rows="3" 
-            class="textarea-vintage" 
-            placeholder="Brève description de l'ouvrage..."
-          ></textarea>
+          <textarea id="resume" name="resume" [(ngModel)]="formLivre.resume" required rows="3" class="textarea-vintage"
+            placeholder="Brève description de l'ouvrage..."></textarea>
         </div>
       </div>
 
@@ -236,7 +206,7 @@
           {{ isEditing ? 'Enregistrer les modifications' : 'Ajouter au catalogue' }}
         </button>
         @if (isEditing) {
-          <button type="button" (click)="cancel()" class="btn-cancel">Annuler</button>
+        <button type="button" (click)="cancel()" class="btn-cancel">Annuler</button>
         }
       </div>
     </form>

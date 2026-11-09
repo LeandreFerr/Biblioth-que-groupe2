@@ -11,5 +11,6 @@ export interface Livre {
   auteur: Auteur;
   editeur: Editeur;
   collection?: Collection | null;
-  genre: Genre;
+  genre: Genre | null;
+
 }
