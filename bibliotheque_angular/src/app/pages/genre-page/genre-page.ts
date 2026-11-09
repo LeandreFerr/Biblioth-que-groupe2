@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { Genre } from '../../model/genre';
-import { GenreService } from '../../service/genre.service';
+import { Genre, GENRE_LABELS } from '../../models/genre';
+import { GenreService } from '../../services/genre-service';
 
 @Component({
   selector: 'app-genre-page',
@@ -10,7 +10,7 @@ import { GenreService } from '../../service/genre.service';
   imports: [CommonModule],
   templateUrl: './genre-page.html'
 })
-export class GenreListPage implements OnInit {
+export class GenrePage implements OnInit {
 
   genres: Genre[] = [];
 
