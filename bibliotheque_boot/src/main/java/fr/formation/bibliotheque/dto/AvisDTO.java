@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import org.springframework.beans.BeanUtils;
 
 import fr.formation.bibliotheque.model.Avis;
+import fr.formation.bibliotheque.model.Livre;
 
 public class AvisDTO {
     
