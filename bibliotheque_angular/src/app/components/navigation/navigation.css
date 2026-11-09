@@ -1,6 +1,6 @@
 :host {
   display: block;
-  background-color: var(--vintage-surface);
+  background-color: #EDE3D4;
   border-bottom: 2px solid var(--vintage-ink);
   position: sticky;
   top: 0;
@@ -69,9 +69,12 @@
 }
 
 .nav-item:hover {
-  color: var(--vintage-ink);
-  background-color: var(--vintage-terracotta-light);
-  border-color: var(--vintage-border);
+  color: #ffffff;
+  background-color: var(--vintage-terracotta);
+  border: 1.5px solid var(--vintage-ink);
+  box-shadow: var(--shadow-retro-sm);
+  font-weight: 700;
+  transform: translate(-1px, -1px);
 }
 
 .nav-item.active {
@@ -85,7 +88,25 @@
 
 button.nav-item {
   background: none;
-  border: none;
+  border: 1.5px solid transparent;
   font: inherit;
   cursor: pointer;
+}
+
+#nav-collections:hover,
+#nav-collections.active {
+  color: #ffffff;
+  background-color: #607D68;
+}
+
+#nav-editeurs:hover,
+#nav-editeurs.active {
+  color: var(--vintage-ink);
+  background-color: var(--vintage-cream);
+}
+
+#nav-avis:hover,
+#nav-avis.active {
+  color: var(--vintage-ink);
+  background-color: var(--vintage-cream);
 }

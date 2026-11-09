@@ -7,24 +7,24 @@
   </a>
 
   <div class="nav-links">
-    <a routerLink="/livre" routerLinkActive="active" class="nav-item">Livres</a>
+    <a routerLink="/livre" routerLinkActive="active" class="nav-item" id="nav-livres">Livres</a>
     |
-    <a routerLink="/genres" routerLinkActive="active" class="nav-item">Genres</a>
+    <a routerLink="/genres" routerLinkActive="active" class="nav-item" id="nav-genres">Genres</a>
     |
-    <a routerLink="/auteur" routerLinkActive="active" class="nav-item">Auteurs</a>
+    <a routerLink="/auteur" routerLinkActive="active" class="nav-item" id="nav-auteurs">Auteurs</a>
     |
-    <a routerLink="/editeur" routerLinkActive="active" class="nav-item">Éditeurs</a>
+    <a routerLink="/editeur" routerLinkActive="active" class="nav-item" id="nav-editeurs">Éditeurs</a>
     |
-    <a routerLink="/collection" routerLinkActive="active" class="nav-item">Collections</a>
+    <a routerLink="/collection" routerLinkActive="active" class="nav-item" id="nav-collections">Collections</a>
     |
-    <a routerLink="/avis" routerLinkActive="active" class="nav-item">Avis</a>
+    <a routerLink="/avis" routerLinkActive="active" class="nav-item" id="nav-avis">Avis</a>
 
     @if (estConnecte()) {
       |
-      <button class="nav-item" (click)="deconnexion()">Déconnexion</button>
+      <button class="nav-item" id="btn-deconnexion" (click)="deconnexion()">Déconnexion</button>
     } @else {
       |
-      <a routerLink="/login" routerLinkActive="active" class="nav-item">Connexion</a>
+      <a routerLink="/login" routerLinkActive="active" class="nav-item" id="nav-connexion">Connexion</a>
     }
   </div>
 </nav>
