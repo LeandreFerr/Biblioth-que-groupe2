@@ -17,6 +17,7 @@ import fr.formation.bibliotheque.model.Avis;
 
 @RestController 
 @RequestMapping ("/api/avis")
+// Il manque un @CrossOrigin pour que angular puisse faire des requetes
 public class AvisRestController {
     
     @Autowired 

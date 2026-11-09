@@ -12,6 +12,7 @@ public class AvisDTO {
     private double note;
     private String commentaire;
     private LocalDate date;
+    // Importer Livre -> Tu l'avais pas donc ça se tient que tu l'ai pas importé
     private Livre livre;
 
     public static AvisDTO convert(Avis avis){
