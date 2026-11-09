@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import fr.formation.bibliotheque.dao.IDAOAvis;
 import fr.formation.bibliotheque.model.Avis;
 
+
 @RestController 
 @RequestMapping ("/api/avis")
 @CrossOrigin("*")
@@ -57,5 +58,10 @@ public class AvisRestController {
         avis.setId(id);
         daoAvis.save(avis);
         return avis;
+    }
+
+    @GetMapping("livre/{livreId}")
+    public List<Avis> afficherParLivre(@PathVariable  Integer livreId) {
+        return daoAvis.findByLivreId(livreId);
     }
 }

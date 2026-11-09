@@ -472,3 +472,27 @@
   color: var(--vintage-ink-muted);
   font-style: italic;
 }
+
+.livre-titre-link {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+}
+
+.livre-titre-link:hover .livre-titre {
+  color: var(--vintage-terracotta);
+  text-decoration: underline;
+}
+
+.btn-view {
+  background-color: #ffffff;
+  color: var(--vintage-terracotta);
+  border-color: var(--vintage-terracotta);
+  text-decoration: none;
+}
+
+.btn-view:hover {
+  background-color: var(--vintage-terracotta);
+  color: #ffffff;
+  border-color: var(--vintage-ink);
+}

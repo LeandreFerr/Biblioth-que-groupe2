@@ -1,0 +1,108 @@
+<div class="page-container">
+  <!-- Bouton Retour -->
+  <div class="nav-back">
+    <a routerLink="/livre" class="btn-retour">
+      <svg class="icon-retour" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+      Retour au registre des livres
+    </a>
+  </div>
+
+  @if (loading()) {
+    <div class="loading-state">
+      <span class="loading-text">Chargement de la fiche de l'ouvrage...</span>
+    </div>
+  } @else if (livre(); as l) {
+    <!-- Fiche détaillée du livre -->
+    <article class="fiche-livre">
+      <header class="fiche-header">
+        <div class="meta-badges">
+          <span class="badge-id">#{{ l.id }}</span>
+          @if (l.genre?.libelle) {
+            <span [class]="'badge-genre genre-' + (l.genre.libelle ? l.genre.libelle.toLowerCase() : '')">{{ l.genre.libelle }}</span>
+          }
+          @if (noteMoyenne() !== null) {
+            <span class="badge-note-globale">
+              <span class="etoiles">{{ getEtoiles(noteMoyenne()!) }}</span>
+              <strong>{{ noteMoyenne() }} / 5</strong>
+              <small>({{ avis().length }} {{ avis().length > 1 ? 'avis' : 'avis' }})</small>
+            </span>
+          }
+        </div>
+        <h1 class="livre-titre">{{ l.titre }}</h1>
+      </header>
+
+      <!-- Métadonnées principales -->
+      <section class="fiche-metas">
+        <div class="meta-item">
+          <span class="meta-label">Auteur</span>
+          <span class="meta-value">{{ l.auteur?.prenom }} {{ l.auteur?.nom }}</span>
+        </div>
+
+        <div class="meta-item">
+          <span class="meta-label">Éditeur</span>
+          <span class="meta-value">{{ l.editeur?.nom }}</span>
+        </div>
+
+        <div class="meta-item">
+          <span class="meta-label">Collection</span>
+          <span class="meta-value">{{ l.collection?.nom || '—' }}</span>
+        </div>
+
+        <div class="meta-item">
+          <span class="meta-label">Année de parution</span>
+          <span class="meta-value">{{ l.annee }}</span>
+        </div>
+      </section>
+
+      <!-- Résumé / Synospis -->
+      <section class="fiche-resume">
+        <h2 class="resume-titre">Synopsis & Résumé</h2>
+        <p class="resume-texte">{{ l.resume }}</p>
+      </section>
+    </article>
+
+    <!-- Section Avis des Lecteurs -->
+    <section class="section-avis">
+      <div class="section-avis-header">
+        <h2 class="section-titre">
+          Avis des Lecteurs
+          <span class="compteur-avis">({{ avis().length }})</span>
+        </h2>
+        <a routerLink="/avis" [queryParams]="{ livreId: l.id }" class="btn-ajouter-avis">
+          + Déposer un avis
+        </a>
+      </div>
+
+      <div class="liste-avis">
+        @for (item of avis(); track item.id) {
+          <div class="card-avis">
+            <div class="card-avis-header">
+              <div class="avis-note">
+                <span class="etoiles">{{ getEtoiles(item.note) }}</span>
+                <span class="note-chiffre">{{ item.note }}/5</span>
+              </div>
+              <time class="avis-date">{{ item.date | date:'dd/MM/yyyy' }}</time>
+            </div>
+            <p class="avis-commentaire">{{ item.commentaire }}</p>
+          </div>
+        } @empty {
+          <div class="avis-vide">
+            <p>Aucun avis n'a encore été déposé pour cet ouvrage.</p>
+            <a routerLink="/avis" [queryParams]="{ livreId: l.id }" class="btn-ajouter-avis">
+              Déposer un avis
+            </a>
+          </div>
+        }
+      </div>
+    </section>
+  } @else {
+    <div class="empty-state">
+      <h2>Ouvrage introuvable</h2>
+      <p>Le livre demandé n'existe pas ou a été retiré du catalogue.</p>
+      <a routerLink="/livre" class="btn-retour">Retourner à la liste</a>
+    </div>
+  }
+</div>

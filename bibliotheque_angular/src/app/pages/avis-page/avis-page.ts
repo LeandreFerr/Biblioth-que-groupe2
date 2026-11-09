@@ -4,6 +4,7 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators, F
 import { Avis } from '../../models/avis';
 import { Observable, startWith, Subject, switchMap } from 'rxjs';
 import { Title } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
 import { AvisService } from '../../services/avis-service';
 import { LivreService } from '../../services/livre-service';
 import { Livre } from '../../models/livre';
@@ -19,6 +20,7 @@ export class AvisPage implements OnInit {
   protected avis$!: Observable<Avis[]>;
   private refresh$: Subject<void> = new Subject<void>();
 
+  private route = inject(ActivatedRoute);
   protected livreService = inject(LivreService);
   protected livres$: Observable<Livre[]> = this.livreService.findAll();
 
@@ -39,7 +41,7 @@ export class AvisPage implements OnInit {
     this.title.setTitle("Liste des avis");
     this.formAvisNoteCtrl = this.formBuilder.control("", Validators.required);
     this.formAvisCommentaireCtrl = this.formBuilder.control("", Validators.required);
-    this.formAvisDateCtrl = this.formBuilder.control("", Validators.required);
+    this.formAvisDateCtrl = this.formBuilder.control(new Date().toISOString().substring(0, 10), Validators.required);
     this.formAvisLivreCtrl = this.formBuilder.control("", Validators.required);
 
     this.formAvisGroup = this.formBuilder.group({
@@ -49,10 +51,16 @@ export class AvisPage implements OnInit {
       livre: this.formBuilder.group({id: this.formAvisLivreCtrl})
     });
 
+    // Pré-sélectionner le livre si fourni dans l'URL (?livreId=...)
+    this.route.queryParamMap.subscribe((params) => {
+      const livreIdParam = params.get('livreId');
+      if (livreIdParam) {
+        this.formAvisLivreCtrl.setValue(Number(livreIdParam));
+      }
+    });
+
     this.avis$ = this.refresh$.pipe(
-
       startWith(null),
-
       switchMap(() => {
         return this.avisService.findAll();
       })
@@ -83,7 +91,7 @@ export class AvisPage implements OnInit {
     this.formAvisNoteCtrl.setValue(avis.note);
     this.formAvisCommentaireCtrl.setValue(avis.commentaire);
     this.formAvisDateCtrl.setValue(avis.date);
-    this.formAvisLivreCtrl.setValue(avis.livre);
+    this.formAvisLivreCtrl.setValue(avis.livre?.id ?? avis.livre);
   }
 
   protected supprimer(avis: Avis) {

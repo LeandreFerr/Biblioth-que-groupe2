@@ -63,6 +63,7 @@
     }
 
     <select [formControl]="formAvisLivreCtrl">
+        <option [ngValue]="" disabled selected>-- Sélectionner un ouvrage --</option>
         @for (livre of (livres$ | async); track livre.id) {
             <option [ngValue]="livre.id">
                 {{ livre.titre }}

@@ -1,0 +1,307 @@
+:host {
+  display: block;
+}
+
+.page-container {
+  max-width: 960px;
+  margin: 2.5rem auto 5rem auto;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .page-container {
+    margin: 1.5rem auto;
+    padding: 0 1rem;
+  }
+}
+
+/* Bouton Retour */
+.nav-back {
+  margin-bottom: 1.8rem;
+}
+
+.btn-retour {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--vintage-terracotta);
+  text-decoration: none;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.btn-retour:hover {
+  color: var(--vintage-terracotta-hover);
+  transform: translateX(-3px);
+}
+
+.icon-retour {
+  width: 18px;
+  height: 18px;
+}
+
+/* États de chargement et d'erreur */
+.loading-state,
+.empty-state {
+  background-color: var(--vintage-surface);
+  border: 2px solid var(--vintage-ink);
+  box-shadow: var(--shadow-retro-md);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.loading-text {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--vintage-ink-muted);
+}
+
+/* Fiche détaillée du livre */
+.fiche-livre {
+  background-color: var(--vintage-surface);
+  border: 2px solid var(--vintage-ink);
+  box-shadow: var(--shadow-retro-md);
+  padding: 2.2rem;
+  margin-bottom: 2.5rem;
+}
+
+.fiche-header {
+  border-bottom: 2px solid var(--vintage-border);
+  padding-bottom: 1.2rem;
+  margin-bottom: 1.8rem;
+}
+
+.meta-badges {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+
+.badge-id {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--vintage-terracotta);
+  background-color: var(--vintage-terracotta-light);
+  padding: 0.2rem 0.55rem;
+  border: 1px solid var(--vintage-terracotta);
+  border-radius: 3px;
+}
+
+.badge-genre {
+  font-family: var(--font-serif);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.2rem 0.65rem;
+  background-color: var(--vintage-forest-light);
+  color: var(--vintage-forest);
+  border: 1px solid var(--vintage-forest);
+  border-radius: 3px;
+}
+
+.badge-note-globale {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  background-color: #fff9e6;
+  color: #8f6b00;
+  border: 1px solid #d4a72c;
+  padding: 0.2rem 0.65rem;
+  border-radius: 3px;
+}
+
+.badge-note-globale .etoiles {
+  color: #e09800;
+}
+
+.livre-titre {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--vintage-ink);
+  margin: 0;
+  line-height: 1.25;
+}
+
+/* Métadonnées */
+.fiche-metas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.2rem;
+  background-color: var(--vintage-surface-tint);
+  border: 1px solid var(--vintage-border);
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.meta-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.meta-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--vintage-ink-muted);
+  margin-bottom: 0.25rem;
+}
+
+.meta-value {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--vintage-ink);
+}
+
+/* Résumé */
+.fiche-resume {
+  margin-top: 1.5rem;
+}
+
+.resume-titre {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--vintage-ink);
+  margin: 0 0 0.8rem 0;
+}
+
+.resume-texte {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--vintage-ink);
+  background-color: #faf8f5;
+  border-left: 3px solid var(--vintage-terracotta);
+  padding: 1.2rem 1.5rem;
+  margin: 0;
+  white-space: pre-line;
+}
+
+/* Section Avis */
+.section-avis {
+  background-color: var(--vintage-surface);
+  border: 2px solid var(--vintage-ink);
+  box-shadow: var(--shadow-retro-md);
+  padding: 2.2rem;
+}
+
+.section-avis-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  border-bottom: 2px solid var(--vintage-border);
+  padding-bottom: 0.9rem;
+  margin-bottom: 1.8rem;
+}
+
+.section-titre {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--vintage-ink);
+  margin: 0;
+}
+
+.compteur-avis {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  color: var(--vintage-ink-muted);
+  font-weight: normal;
+}
+
+/* Liste des cartes d'avis */
+.liste-avis {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.card-avis {
+  background-color: #faf9f6;
+  border: 1px solid var(--vintage-border);
+  padding: 1.2rem 1.5rem;
+  border-left: 4px solid var(--vintage-forest);
+}
+
+.card-avis-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.6rem;
+}
+
+.avis-note {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.etoiles {
+  color: #d48806;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+}
+
+.note-chiffre {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--vintage-ink);
+}
+
+.avis-date {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--vintage-ink-muted);
+}
+
+.avis-commentaire {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--vintage-ink);
+}
+
+/* État vide pour avis */
+.avis-vide {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: var(--vintage-ink-muted);
+  font-style: italic;
+}
+
+.btn-ajouter-avis {
+  display: inline-block;
+  /* no margin */
+  padding: 0.55rem 1.2rem;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--vintage-surface);
+  background-color: var(--vintage-forest);
+  text-decoration: none;
+  border: 1px solid var(--vintage-ink);
+  box-shadow: var(--shadow-retro-sm);
+  transition: all 0.15s ease;
+}
+
+.btn-ajouter-avis:hover {
+  background-color: var(--vintage-forest-hover);
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0px var(--vintage-border-dark);
+}
+
+.avis-vide .btn-ajouter-avis { margin-top: 1rem; }

@@ -7,6 +7,7 @@ import { AvisPage } from './pages/avis-page/avis-page';
 import { LoginPage } from './pages/login-page/login-page';
 import { GenrePage } from './pages/genre-page/genre-page';
 import { authGuard } from './guards/auth-guard';
+import { LivreDetailPage } from './pages/livre-detail-page/livre-detail-page';
 
 export const routes: Routes = [
   {
@@ -16,6 +17,11 @@ export const routes: Routes = [
   {
     path: 'livre',
     component: LivrePage,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'livre/:id',
+    component: LivreDetailPage,
     canActivate: [authGuard],
   },
   {

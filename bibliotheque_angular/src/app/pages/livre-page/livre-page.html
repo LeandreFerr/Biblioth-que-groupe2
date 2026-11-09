@@ -28,7 +28,9 @@
             <!-- Titre + Genre + Résumé -->
             <td class="col-livre">
               <div class="livre-meta-top">
-                <span class="livre-titre">{{ livre.titre }}</span>
+                <a [routerLink]="['/livre', livre.id]" class="livre-titre-link" title="Consulter la fiche détaillée">
+                  <span class="livre-titre">{{ livre.titre }}</span>
+                </a>
                 <span [class]="'badge-genre genre-' + (livre.genre?.libelle ? livre.genre.libelle.toLowerCase() : '')">
                   {{ livre.genre?.libelle }}
                 </span>
@@ -139,7 +141,10 @@
 
         <!-- Genre -->
         <div class="form-group">
-          <label class="label-vintage" for="genre">Genre littéraire *</label>
+          <div class="label-header">
+            <label class="label-vintage" for="genre">Genre littéraire *</label>
+            <a routerLink="/genres" class="btn-quick-add" title="Gérer les genres">+ Nouveau</a>
+          </div>
           <select 
             id="genre" 
             name="genre" 
@@ -158,7 +163,7 @@
         <div class="form-group">
           <div class="label-header">
             <label class="label-vintage" for="auteurId">Auteur *</label>
-            <button type="button" (click)="notifierIndisponible('auteurs')" class="btn-quick-add" title="Page Auteur en attente">+ Nouveau</button>
+            <a routerLink="/auteur" class="btn-quick-add" title="Gérer les auteurs">+ Nouveau</a>
           </div>
           <select 
             id="auteurId" 
@@ -178,7 +183,7 @@
         <div class="form-group">
           <div class="label-header">
             <label class="label-vintage" for="editeurId">Éditeur *</label>
-            <button type="button" (click)="notifierIndisponible('éditeurs')" class="btn-quick-add" title="Page Éditeur en attente">+ Nouveau</button>
+            <a routerLink="/editeur" class="btn-quick-add" title="Gérer les éditeurs">+ Nouveau</a>
           </div>
           <select 
             id="editeurId" 
@@ -198,7 +203,7 @@
         <div class="form-group">
           <div class="label-header">
             <label class="label-vintage" for="collectionId">Collection (optionnel)</label>
-            <button type="button" (click)="notifierIndisponible('collections')" class="btn-quick-add" title="Page Collection en attente">+ Nouvelle</button>
+            <a routerLink="/collection" class="btn-quick-add" title="Gérer les collections">+ Nouvelle</a>
           </div>
           <select 
             id="collectionId" 

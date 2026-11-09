@@ -6,7 +6,7 @@ import { Avis } from '../models/avis';
 @Service()
 export class AvisService {
 
-    private apiUrl: string= "http://localhost:8080/api/avis";
+    private apiUrl: string = "http://localhost:8080/api/avis";
 
     private http: HttpClient = inject(HttpClient);
 
@@ -24,5 +24,9 @@ export class AvisService {
 
     public remove(avis: Avis): Observable<void> {
         return this.http.delete<void>(`${ this.apiUrl }/${ avis.id }`);
+    }
+
+    public findByLivreId(livreId: number): Observable<Avis[]> {
+        return this.http.get<Avis[]>(`${this.apiUrl}/livre/${livreId}`);
     }
 }
