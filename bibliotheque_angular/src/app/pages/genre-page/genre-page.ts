@@ -13,6 +13,7 @@ import { GenreService } from '../../services/genre-service';
 export class GenrePage implements OnInit {
 
   genres: Genre[] = [];
+  labels = GENRE_LABELS;
 
   constructor(private genreService: GenreService) {}
 
@@ -23,10 +24,11 @@ export class GenrePage implements OnInit {
   chargerGenres(): void {
     this.genreService.getAll().subscribe({
       next: (data) => {
+        console.log('Genres récupérés :', data);
         this.genres = data;
       },
       error: (err) => {
-        console.error('Erreur lors du chargement des genres', err);
+        console.error('Erreur :', err);
       }
     });
   }

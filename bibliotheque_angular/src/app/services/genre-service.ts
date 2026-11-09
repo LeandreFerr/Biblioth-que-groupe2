@@ -10,7 +10,7 @@ export class GenreService {
 
   private url = 'http://localhost:8090/api/genre';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getAll(): Observable<Genre[]> {
     return this.http.get<Genre[]>(this.url);
