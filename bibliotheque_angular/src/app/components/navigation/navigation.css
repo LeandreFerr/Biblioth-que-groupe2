@@ -91,12 +91,27 @@
   background-color: #607D68;
 }
 
+#nav-collections.active {
+  color: #ffffff;
+  background-color: #607D68;
+}
+
 #nav-editeurs:hover {
   color: var(--vintage-ink);
   background-color: var(--vintage-cream);
 }
 
+#nav-editeurs.active {
+  color: var(--vintage-ink);
+  background-color: var(--vintage-cream);
+}
+
 #nav-avis:hover {
+  color: var(--vintage-ink);
+  background-color: var(--vintage-cream);
+}
+
+#nav-avis.active {
   color: var(--vintage-ink);
   background-color: var(--vintage-cream);
 }
