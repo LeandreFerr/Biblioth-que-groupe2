@@ -2,7 +2,6 @@ package fr.formation.bibliotheque.restController;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,8 +20,11 @@ import fr.formation.bibliotheque.model.Avis;
 @CrossOrigin("*")
 public class AvisRestController {
     
-    @Autowired 
-    IDAOAvis daoAvis;
+    final IDAOAvis daoAvis;
+
+    AvisRestController(IDAOAvis daoAvis) {
+        this.daoAvis = daoAvis;
+    }
 
     @GetMapping 
     public List<Avis> AfficherTous()

@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, 
 import { AsyncPipe } from '@angular/common';
 import { Title } from '@angular/platform-browser';
 import { Editeur } from '../../models/editeur';
-import { EditeurService } from '../../service/editeur-service';
+import { EditeurService } from '../../services/editeur-service';
 import { Observable, startWith, Subject, switchMap } from 'rxjs';
 
 @Component({

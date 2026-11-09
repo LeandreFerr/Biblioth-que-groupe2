@@ -5,8 +5,8 @@ import { Title } from '@angular/platform-browser';
 import { LivreService } from '../../services/livre-service';
 import { Auteur, Collection, Editeur, Genre, GENRE_LABELS, Livre } from '../../models';
 import { AuteurService } from '../../services/auteur-service';
-import { EditeurService } from '../../service/editeur-service';
-import { CollectionService } from '../../service/collection-service';
+import { EditeurService } from '../../services/editeur-service';
+import { CollectionService } from '../../services/collection-service';
 
 @Component({
   imports: [FormsModule],

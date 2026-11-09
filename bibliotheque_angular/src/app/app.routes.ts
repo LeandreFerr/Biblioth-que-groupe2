@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
-import { CollectionComponent } from './page/collection/collection';
+import { CollectionComponent } from './pages/collection/collection';
 import { LivrePage } from './pages/livre-page/livre-page';
 import { AuteurPage } from './pages/auteur-page/auteur-page';
-import { EditeurPage } from './page/editeur-page/editeur-page';
+import { EditeurPage } from './pages/editeur-page/editeur-page';
 import { AvisPage } from './pages/avis-page/avis-page';
 
 export const routes: Routes = [

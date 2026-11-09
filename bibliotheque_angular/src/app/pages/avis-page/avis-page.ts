@@ -4,7 +4,7 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators, F
 import { Avis } from '../../models/avis';
 import { Observable, startWith, Subject, switchMap } from 'rxjs';
 import { Title } from '@angular/platform-browser';
-import { AvisService } from '../../service/avis-service';
+import { AvisService } from '../../services/avis-service';
 import { LivreService } from '../../services/livre-service';
 import { Livre } from '../../models/livre';
 

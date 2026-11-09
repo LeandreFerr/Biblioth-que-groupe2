@@ -1,6 +1,6 @@
 import { Component, OnInit, inject, ChangeDetectorRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CollectionService, Collection } from '../../service/collection-service';
+import { CollectionService, Collection } from '../../services/collection-service';
 
 @Component({
   selector: 'app-collection',
