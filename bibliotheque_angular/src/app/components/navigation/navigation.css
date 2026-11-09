@@ -1,25 +1,7 @@
 
-nav {
-  display: flex;
-  gap: 20px;
-  padding: 20px;
-  background-color: #333;
-}
-
-a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-a:hover {
-  color: #61dafb;
-}
-
 :host {
-  display: block;
-  background-color: var(--vintage-surface);
-  border-bottom: 2px solid var(--vintage-ink);
+  display: flex;
+  background-color: #EDE3D4;
   position: sticky;
   top: 0;
   z-index: 50;
@@ -87,9 +69,12 @@ a:hover {
 }
 
 .nav-item:hover {
-  color: var(--vintage-ink);
-  background-color: var(--vintage-terracotta-light);
-  border-color: var(--vintage-border);
+  color: #ffffff;
+  background-color: var(--vintage-terracotta);
+  border: 1.5px solid var(--vintage-ink);
+  box-shadow: var(--shadow-retro-sm);
+  font-weight: 700;
+  transform: translate(-1px, -1px);
 }
 
 .nav-item.active {
@@ -99,5 +84,19 @@ a:hover {
   box-shadow: var(--shadow-retro-sm);
   font-weight: 700;
   transform: translate(-1px, -1px);
+}
 
+#nav-collections:hover {
+  color: #ffffff;
+  background-color: #607D68;
+}
+
+#nav-editeurs:hover {
+  color: var(--vintage-ink);
+  background-color: var(--vintage-cream);
+}
+
+#nav-avis:hover {
+  color: var(--vintage-ink);
+  background-color: var(--vintage-cream);
 }
