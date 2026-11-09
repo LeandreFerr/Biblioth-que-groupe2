@@ -82,3 +82,10 @@
   font-weight: 700;
   transform: translate(-1px, -1px);
 }
+
+button.nav-item {
+  background: none;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+}
