@@ -22,7 +22,7 @@ public class Avis {
     private Integer id;
 
     @Column (nullable = false)
-    private double note;
+    private Double note;
 
     @Column (nullable = false)
     private String commentaire;
@@ -37,7 +37,7 @@ public class Avis {
 
     public Avis() {}
 
-    public Avis(Integer id, double note, String commentaire, LocalDate date, Livre livre) {
+    public Avis(Integer id, Double note, String commentaire, LocalDate date, Livre livre) {
         this.id = id;
         this.note = note;
         this.commentaire = commentaire;
@@ -53,11 +53,11 @@ public class Avis {
         this.id = id;
     }
 
-    public double getNote() {
+    public Double getNote() {
         return note;
     }
 
-    public void setNote(double note) {
+    public void setNote(Double note) {
         this.note = note;
     }
 

@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.formation.bibliotheque.dao.IDAOLivre;
-import fr.formation.bibliotheque.model.Genre;
 import fr.formation.bibliotheque.model.Livre;
 
 @RestController 
@@ -70,7 +69,7 @@ public class LivreRestController {
 
     // Filtrer par année : /api/livre/annee/1984
     @GetMapping("/annee/{annee}")
-    public List<Livre> rechercherParAnnee(@PathVariable int annee) {
+    public List<Livre> rechercherParAnnee(@PathVariable Integer annee) {
         return daoLivre.findByAnnee(annee);
     }
 
@@ -92,10 +91,10 @@ public class LivreRestController {
         return daoLivre.findByCollectionId(id);
     }
 
-    // Filtrer par Genre : /api/livre/genre/SCIENCE_FICTION
-    @GetMapping("/genre/{genre}")
-    public List<Livre> rechercherParGenre(@PathVariable Genre genre) {
-        return daoLivre.findByGenre(genre);
+    // Filtrer par Genre : /api/livre/genre/1
+    @GetMapping("/genre/{id}")
+    public List<Livre> rechercherParGenre(@PathVariable Integer id) {
+        return daoLivre.findByGenreId(id);
     }
 
 }

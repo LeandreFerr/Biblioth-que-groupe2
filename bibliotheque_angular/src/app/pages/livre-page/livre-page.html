@@ -29,8 +29,8 @@
             <td class="col-livre">
               <div class="livre-meta-top">
                 <span class="livre-titre">{{ livre.titre }}</span>
-                <span [class]="'badge-genre genre-' + livre.genre.toLowerCase()">
-                  {{ genreLabels[livre.genre] || livre.genre }}
+                <span [class]="'badge-genre genre-' + (livre.genre?.libelle ? livre.genre.libelle.toLowerCase() : '')">
+                  {{ livre.genre?.libelle }}
                 </span>
               </div>
               <p class="livre-resume" [title]="livre.resume">
@@ -143,14 +143,13 @@
           <select 
             id="genre" 
             name="genre" 
-            [(ngModel)]="formLivre.genre" 
+            [(ngModel)]="formLivre.genre.id"
             required 
-            [class]="'select-vintage select-genre genre-' + (formLivre.genre ? formLivre.genre.toLowerCase() : '')"
+            class="select-vintage"
           >
-            @for (g of genres; track g) {
-              <option [value]="g" [class]="'opt-genre genre-' + g.toLowerCase()">
-                {{ genreLabels[g] }}
-              </option>
+            <option [ngValue]="undefined" disabled>-- Sélectionner un genre (obligatoire) * --</option>
+            @for (g of genres; track g.id) {
+              <option [ngValue]="g.id">{{ g.libelle }}</option>
             }
           </select>
         </div>

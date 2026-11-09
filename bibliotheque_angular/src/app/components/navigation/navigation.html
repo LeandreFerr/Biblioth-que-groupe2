@@ -5,8 +5,11 @@
       <span class="brand-subtitle">Groupe 2</span>
     </div>
   </a>
+
   <div class="nav-links">
     <a routerLink="/livre" routerLinkActive="active" class="nav-item">Livres</a>
+    |
+    <a routerLink="/genres" routerLinkActive="active" class="nav-item">Genres</a>
     |
     <a routerLink="/auteur" routerLinkActive="active" class="nav-item">Auteurs</a>
     |
@@ -15,5 +18,13 @@
     <a routerLink="/collection" routerLinkActive="active" class="nav-item">Collections</a>
     |
     <a routerLink="/avis" routerLinkActive="active" class="nav-item">Avis</a>
+
+    @if (estConnecte()) {
+      |
+      <button class="nav-item" (click)="deconnexion()">Déconnexion</button>
+    } @else {
+      |
+      <a routerLink="/login" routerLinkActive="active" class="nav-item">Connexion</a>
+    }
   </div>
 </nav>

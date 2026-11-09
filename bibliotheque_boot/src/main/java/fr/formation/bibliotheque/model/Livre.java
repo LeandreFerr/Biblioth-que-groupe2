@@ -2,8 +2,6 @@ package fr.formation.bibliotheque.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -11,7 +9,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
-@Entity 
+@Entity
 @Table(name = "livre")
 public class Livre {
 
@@ -32,26 +30,28 @@ public class Livre {
     @Column(nullable = false)
     private Integer annee;
 
-    @ManyToOne 
+    @ManyToOne
     @JoinColumn(name = "auteur", nullable = false)
     private Auteur auteur;
 
-    @ManyToOne 
+    @ManyToOne
     @JoinColumn(name = "editeur", nullable = false)
     private Editeur editeur;
 
-    @ManyToOne 
+    @ManyToOne
     @JoinColumn(name = "collection", nullable = true)
     private Collection collection;
 
-    @Enumerated(EnumType.STRING)
+    @ManyToOne
+    @JoinColumn(name = "genre", nullable = false)
     private Genre genre;
 
     // ==========================================
     // CONSTRUCTEURS
     // ==========================================
 
-    public Livre() { }
+    public Livre() {
+    }
 
     public Livre(Integer id, String titre, String resume, Integer annee, Auteur auteur, Editeur editeur,
             Collection collection, Genre genre) {

@@ -3,10 +3,11 @@ import { FormsModule } from '@angular/forms';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { Title } from '@angular/platform-browser';
 import { LivreService } from '../../services/livre-service';
-import { Auteur, Collection, Editeur, Genre, GENRE_LABELS, Livre } from '../../models';
 import { AuteurService } from '../../services/auteur-service';
 import { EditeurService } from '../../services/editeur-service';
 import { CollectionService } from '../../services/collection-service';
+import { GenreService } from '../../services/genre-service';
+import { Auteur, Collection, Editeur, Genre, Livre } from '../../models';
 
 @Component({
   imports: [FormsModule],
@@ -21,12 +22,13 @@ export class LivrePage implements OnInit {
     private livreService: LivreService,
     private auteurService: AuteurService,
     private editeurService: EditeurService,
-    private collectionService: CollectionService
+    private collectionService: CollectionService,
+    private genreService: GenreService
   ) {
     this.resetFormLivre();
   }
 
-  // Seul service géré directement par ce composant
+  // Chargement des livres
   protected livres = rxResource({
     stream: () => this.livreService.findAll()
   });
@@ -35,18 +37,17 @@ export class LivrePage implements OnInit {
   protected auteursResource = rxResource({ stream: () => this.auteurService.findAll() });
   protected editeursResource = rxResource({ stream: () => this.editeurService.findAll() });
   protected collectionsResource = rxResource({ stream: () => this.collectionService.getCollections() });
+  protected genresResource = rxResource({ stream: () => this.genreService.getAll() });
 
   protected get auteurs(): Auteur[] { return this.auteursResource.value() ?? []; }
   protected get editeurs(): Editeur[] { return this.editeursResource.value() ?? []; }
   protected get collections(): Collection[] { return this.collectionsResource.value() ?? []; }
+  protected get genres(): Genre[] { return this.genresResource.value() ?? []; }
 
   protected formLivre!: Livre;
   protected isEditing: boolean = false;
   protected messageInfo: string | null = null;
   private messageTimeout: any;
-  
-  protected readonly genres = Object.values(Genre);
-  protected readonly genreLabels = GENRE_LABELS;
 
   ngOnInit(): void {
     this.title.setTitle('Registre des Livres');
@@ -66,6 +67,19 @@ export class LivrePage implements OnInit {
   }
 
   protected save(): void {
+    if (!this.formLivre.genre?.id) {
+      alert('Le genre est obligatoire pour enregistrer un livre.');
+      return;
+    }
+    if (!this.formLivre.auteur?.id) {
+      alert('L\'auteur est obligatoire pour enregistrer un livre.');
+      return;
+    }
+    if (!this.formLivre.editeur?.id) {
+      alert('L\'éditeur est obligatoire pour enregistrer un livre.');
+      return;
+    }
+
     this.livreService.save(this.formLivre).subscribe({
       next: () => {
         this.livres.reload();
@@ -80,6 +94,9 @@ export class LivrePage implements OnInit {
 
   protected edit(livre: Livre): void {
     this.formLivre = JSON.parse(JSON.stringify(livre));
+    if (!this.formLivre.genre) {
+      this.formLivre.genre = { id: undefined, libelle: '' };
+    }
     this.isEditing = true;
     window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
   }
@@ -109,7 +126,7 @@ export class LivrePage implements OnInit {
       titre: '',
       resume: '',
       annee: new Date().getFullYear(), 
-      genre: Genre.ROMAN,
+      genre: { id: undefined, libelle: '' },
       auteur: {
         id: undefined,
         nom: '',

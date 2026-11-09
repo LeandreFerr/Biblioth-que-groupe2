@@ -1,0 +1,39 @@
+<h2>Connexion</h2>
+
+<form (ngSubmit)="seConnecter()">
+
+  <div>
+    <label for="username">Identifiant :</label>
+
+    <input
+      id="username"
+      type="text"
+      name="username"
+      [(ngModel)]="username"
+      required
+    >
+  </div>
+
+  <div>
+    <label for="password">Mot de passe :</label>
+
+    <input
+      id="password"
+      type="password"
+      name="password"
+      [(ngModel)]="password"
+      required
+    >
+  </div>
+
+  <button type="submit">
+    Se connecter
+  </button>
+
+  @if (erreur) {
+    <p style="color: red;">
+      {{ erreur }}
+    </p>
+  }
+
+</form>

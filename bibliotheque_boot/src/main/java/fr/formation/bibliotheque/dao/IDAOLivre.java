@@ -13,7 +13,7 @@ public interface IDAOLivre extends JpaRepository<Livre, Integer> {
     List<Livre> findByTitreContainingIgnoreCase(String titre);
 
     // Recherche par année
-    List<Livre> findByAnnee(int annee);
+    List<Livre> findByAnnee(Integer annee);
 
     // Recherche par Auteur (via son ID)
     List<Livre> findByAuteurId(Integer auteurId);
@@ -26,5 +26,7 @@ public interface IDAOLivre extends JpaRepository<Livre, Integer> {
 
     // Recherche par Genre (Enum)
     List<Livre> findByGenre(Genre genre);
+
+    List<Livre> findByGenreId(Integer genreId);
 
 }
