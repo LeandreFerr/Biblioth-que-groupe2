@@ -1,13 +1,23 @@
+package fr.formation.bibliotheque.restController;
 
-package fr.biblio.restcontroller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import fr.formation.bibliotheque.model.Genre;
 
-import org.springframework.web.bind.annotation.*;
+@RestController
+@RequestMapping("/api/genre")
+public class GenreRestController {
 
-import fr.biblio.dao.IDAOGenre;
-import fr.biblio.model.Genre;
+    @GetMapping
+    public Genre[] getAll() {
+        return Genre.values();
+    }
+}
 
+
+/*
 @RestController
 @RequestMapping("/api/genre")
 public class GenreRestController {
@@ -44,3 +54,5 @@ public class GenreRestController {
         dao.deleteById(id);
     }
 }
+
+*/

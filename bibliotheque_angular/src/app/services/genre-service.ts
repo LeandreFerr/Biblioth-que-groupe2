@@ -8,7 +8,7 @@ import { Genre } from '../model/genre';
 })
 export class GenreService {
 
-  private apiUrl = 'http://localhost:8080/api/genre';
+  private apiUrl = 'http://localhost:8090/api/genre';
 
   constructor(private http: HttpClient) {}
 
