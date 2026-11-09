@@ -31,6 +31,9 @@ public class Avis {
     @Column(nullable = false)
     private LocalDate date;
 
+    // REMARQUES
+    // Importer Livre -> Tu l'avais pas donc ça se tient que tu l'ai pas importé
+    // @OneToOne -> Un livre ne peut avoir qu'un seul avis, ça risque d'être bloquant, peut être qu'il faut revoir ça 
     @OneToOne 
     @JoinColumn (name = "livre", nullable = false)
     private Livre livre;

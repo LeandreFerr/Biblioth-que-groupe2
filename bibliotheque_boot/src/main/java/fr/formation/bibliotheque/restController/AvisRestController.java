@@ -34,12 +34,16 @@ public class AvisRestController {
         return daoAvis.findById(id).orElse(null);
     }
 
+
+    // Tu appelle une path variable (trouvable dans l'url) mais tu n'en mets pas donc ça ne sera jamais trouvé
     @DeleteMapping 
     public void supprimer(@PathVariable Integer id)
     {
         daoAvis.deleteById(id);
     }
 
+    // Ici ton @PathVariable attends un Avis, tu lui donnes un id
+    // Revoir peut être ton post mapping et lui passer un avis en @RequestBody
     @PostMapping ("/{id}")
     public Avis ajouter(@PathVariable Avis avis)
     {
