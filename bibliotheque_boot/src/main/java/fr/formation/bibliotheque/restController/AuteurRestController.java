@@ -2,7 +2,6 @@ package fr.formation.bibliotheque.restController;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,8 +20,11 @@ import fr.formation.bibliotheque.model.Auteur;
 @RequestMapping ("/api/auteur")
 public class AuteurRestController {
 
-    @Autowired 
-    IDAOAuteur daoAuteur;
+    final IDAOAuteur daoAuteur;
+
+	AuteurRestController(IDAOAuteur daoAuteur) {
+		this.daoAuteur = daoAuteur;
+	}
 
     @GetMapping
 	public List<Auteur> afficherTous()

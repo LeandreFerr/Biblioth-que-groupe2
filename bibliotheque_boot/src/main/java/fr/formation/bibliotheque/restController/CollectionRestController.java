@@ -2,7 +2,6 @@ package fr.formation.bibliotheque.restController;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,8 +21,11 @@ import fr.formation.bibliotheque.model.Collection;
 @RequestMapping("/api/collection")
 public class CollectionRestController {
 
-    @Autowired
-    IDAOCollection daoCollection;
+    final IDAOCollection daoCollection;
+
+    CollectionRestController(IDAOCollection daoCollection) {
+        this.daoCollection = daoCollection;
+    }
 
     @GetMapping
     public List<Collection> afficherTous() {
