@@ -1,0 +1,76 @@
+<h1>Liste des avis</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>NOTE</th>
+            <th>COMMENTAIRE</th>
+            <th>DATE</th>
+            <th>LIVRE</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @for (avis of (avis$ | async); track avis.id) {
+        <tr>
+            <td>{{ avis.id }}</td>
+            <td>{{ avis.note }}</td>
+            <td>{{ avis.commentaire }}</td>
+            <td>{{ avis.date }}</td>
+            <td>{{ avis.livre.titre }}</td>
+            <td>
+                <button (click)="editer(avis)">Editer</button>
+                <button (click)="supprimer(avis)">Supprimer</button>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+<br>
+
+<form (submit)="ajouterOuModifier()" [formGroup]="formAvisGroup">
+
+    <div>
+        <input type="text" [formControl]="formAvisNoteCtrl" placeholder="note de l'avis" />
+    </div>
+
+    @if (formAvisNoteCtrl.dirty && formAvisNoteCtrl.hasError('required')) {
+    <div>
+        La note est obligatoire !
+    </div>
+    }
+
+    <div>
+        <input type="text" [formControl]="formAvisCommentaireCtrl" placeholder="commentaire de l'avis" />
+    </div>
+
+    @if (formAvisCommentaireCtrl.dirty && formAvisCommentaireCtrl.hasError('required')) {
+    <div>
+        L'avis est obligatoire !
+    </div>
+    }
+
+    <div>
+        <input type="date" [formControl]="formAvisDateCtrl" placeholder="date de l'avis" />
+    </div>
+
+    @if (formAvisDateCtrl.dirty && formAvisDateCtrl.hasError('required')) {
+    <div>
+        La date est obligatoire !
+    </div>
+    }
+
+    <select [formControl]="formAvisLivreCtrl">
+        @for (livre of (livres$ | async); track livre.id) {
+            <option [ngValue]="livre.id">
+                {{ livre.titre }}
+            </option>
+        }
+    </select>
+
+    <div>
+        <button [disabled]="formAvisGroup.invalid" type="submit">Ajouter</button>
+    </div>
+</form>

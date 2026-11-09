@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AsyncPipe } from '@angular/common';
 import { Title } from '@angular/platform-browser';
-import { Editeur } from '../../model/editeur';
+import { Editeur } from '../../models/editeur';
 import { EditeurService } from '../../service/editeur-service';
 import { Observable, startWith, Subject, switchMap } from 'rxjs';
 

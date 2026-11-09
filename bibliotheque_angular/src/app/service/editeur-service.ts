@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Service } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Editeur } from '../model/editeur';
+import { Editeur } from '../models/editeur';
 
 @Service()
 export class EditeurService {

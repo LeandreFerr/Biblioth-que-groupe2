@@ -30,7 +30,7 @@ public class Livre {
     private String resume;
 
     @Column(nullable = false)
-    private int annee;
+    private Integer annee;
 
     @ManyToOne 
     @JoinColumn(name = "auteur", nullable = false)
@@ -53,7 +53,7 @@ public class Livre {
 
     public Livre() { }
 
-    public Livre(Integer id, String titre, String resume, int annee, Auteur auteur, Editeur editeur,
+    public Livre(Integer id, String titre, String resume, Integer annee, Auteur auteur, Editeur editeur,
             Collection collection, Genre genre) {
         this.id = id;
         this.titre = titre;
@@ -93,11 +93,11 @@ public class Livre {
         this.resume = resume;
     }
 
-    public int getAnnee() {
+    public Integer getAnnee() {
         return annee;
     }
 
-    public void setAnnee(int annee) {
+    public void setAnnee(Integer annee) {
         this.annee = annee;
     }
 

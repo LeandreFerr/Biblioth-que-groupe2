@@ -3,6 +3,7 @@ package fr.formation.bibliotheque.restController;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,7 +18,7 @@ import fr.formation.bibliotheque.model.Avis;
 
 @RestController 
 @RequestMapping ("/api/avis")
-// Il manque un @CrossOrigin pour que angular puisse faire des requetes
+@CrossOrigin("*")
 public class AvisRestController {
     
     @Autowired 
@@ -35,18 +36,14 @@ public class AvisRestController {
         return daoAvis.findById(id).orElse(null);
     }
 
-
-    // Tu appelle une path variable (trouvable dans l'url) mais tu n'en mets pas donc ça ne sera jamais trouvé
-    @DeleteMapping 
+    @DeleteMapping ("/{id}") 
     public void supprimer(@PathVariable Integer id)
     {
         daoAvis.deleteById(id);
     }
 
-    // Ici ton @PathVariable attends un Avis, tu lui donnes un id
-    // Revoir peut être ton post mapping et lui passer un avis en @RequestBody
-    @PostMapping ("/{id}")
-    public Avis ajouter(@PathVariable Avis avis)
+    @PostMapping
+    public Avis ajouter(@RequestBody Avis avis)
     {
         daoAvis.save(avis);
         return avis;

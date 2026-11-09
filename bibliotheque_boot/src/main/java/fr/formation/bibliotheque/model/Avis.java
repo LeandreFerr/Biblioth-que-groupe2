@@ -10,7 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity 
@@ -31,9 +31,7 @@ public class Avis {
     @Column(nullable = false)
     private LocalDate date;
 
-    // REMARQUES
-    // @OneToOne -> Un livre ne peut avoir qu'un seul avis, ça risque d'être bloquant, peut être qu'il faut revoir ça 
-    @OneToOne 
+    @ManyToOne 
     @JoinColumn (name = "livre", nullable = false)
     private Livre livre;
 
