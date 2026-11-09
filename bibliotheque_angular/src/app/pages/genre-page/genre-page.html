@@ -1,11 +1,67 @@
-<h2>Liste des genres</h2>
+<h2>Gestion des genres</h2>
 
+<!-- FORMULAIRE -->
+<h3>
+  {{ genreEnCours ? 'Modifier un genre' : 'Ajouter un genre' }}
+</h3>
 
-<p>Nombre de genres : {{ genres.length }}</p>
+<form (ngSubmit)="ajouterOuModifier()">
 
-<ul>
-  <li *ngFor="let genre of genres">
-    {{ genre.id }} - {{ genre.libelle }}
-  </li>
-</ul>
+  <label for="libelle">Libellé :</label>
 
+  <input
+    type="text"
+    id="libelle"
+    name="libelle"
+    [(ngModel)]="libelle"
+    required
+  >
+
+  <button type="submit">
+    {{ genreEnCours ? 'Modifier' : 'Ajouter' }}
+  </button>
+
+  <button
+    type="button"
+    *ngIf="genreEnCours"
+    (click)="annuler()"
+  >
+    Annuler
+  </button>
+
+</form>
+
+<hr>
+
+<!-- LISTE DES GENRES -->
+<h3>Liste des genres</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Genre</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let genre of genres">
+
+      <td>{{ genre.id }}</td>
+
+      <td>{{ genre.libelle }}</td>
+
+      <td>
+        <button (click)="modifier(genre)">
+          Modifier
+        </button>
+
+        <button (click)="supprimer(genre)">
+          Supprimer
+        </button>
+      </td>
+
+    </tr>
+  </tbody>
+</table>

@@ -4,21 +4,10 @@ import fr.formation.bibliotheque.model.Genre;
 import fr.formation.bibliotheque.dao.IDAOGenre;
 
 import java.util.List;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-/*
-@RestController
-@RequestMapping("/api/genre")
-@CrossOrigin(origins = "http://localhost:4200")
-public class GenreRestController {
-
-    @GetMapping
-    public Genre[] getAll() {
-        return Genre.values();
-    }
-}
-
- */
 
 @RestController
 @RequestMapping("/api/genre")
@@ -31,30 +20,50 @@ public class GenreRestController {
         this.dao = dao;
     }
 
+    // READ : récupérer tous les genres
     @GetMapping
     public List<Genre> afficherTous() {
         return dao.findAll();
     }
 
+    // READ : récupérer un genre par son ID
     @GetMapping("/{id}")
-    public Genre afficherParId(@PathVariable Integer id) {
-        return dao.findById(id).orElse(null);
+    public ResponseEntity<Genre> afficherParId(@PathVariable Integer id) {
+        return dao.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
+    // CREATE : ajouter un genre
     @PostMapping
     public Genre ajouter(@RequestBody Genre genre) {
+        genre.setId(null);
         return dao.save(genre);
     }
 
+    // UPDATE : modifier un genre
     @PutMapping("/{id}")
-    public Genre modifier(@PathVariable Integer id, @RequestBody Genre genre) {
+    public ResponseEntity<Genre> modifier(
+            @PathVariable Integer id,
+            @RequestBody Genre genre) {
+
+        if (!dao.existsById(id)) {
+            return ResponseEntity.notFound().build();
+        }
+
         genre.setId(id);
-        return dao.save(genre);
+        return ResponseEntity.ok(dao.save(genre));
     }
 
+    // DELETE : supprimer un genre
     @DeleteMapping("/{id}")
-    public void supprimer(@PathVariable Integer id) {
+    public ResponseEntity<Void> supprimer(@PathVariable Integer id) {
+
+        if (!dao.existsById(id)) {
+            return ResponseEntity.notFound().build();
+        }
+
         dao.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 }
-
